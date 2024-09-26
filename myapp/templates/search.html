@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Product List</title>
+    <style type="text/css">
+        .card {
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+      
+        <form method="GET" class="form-inline mb-3" enctype="multipart/form-data">
+            <input type="text" name="q" class="form-control mr-2" placeholder="Search products..." aria-label="Search" value="{{ request.GET.q }}" >
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        
+    <div class="container">
+        <div class="row">
+             {% for product in products %}
+             <div class="col-md-3 mb-4">
+                 <div class="card h-100 mx-2">
+                     <img class="card-img-top" src="{{product.product_image.url}}" alt="card image" style=" height: 150px;">
+                     <div class="card-body">
+                        <p class="card-text"> {{ product.product_id }} </p>
+                       <h5 class="card-title"> Name : {{ product.product }}</h5>
+                       <p class="card-price">Price : {{ product.product_price }} </p>
+                       <p class="card-model">Model : {{ product.product_model }} </p>
+                       <p class="card-ram">Ram : {{ product.product_ram }} </p>
+                     </div>
+                 </div>
+             </div>
+             {% endfor %}
+        </div>
+    </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
